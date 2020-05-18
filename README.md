@@ -1,5 +1,5 @@
 # candle-js
- A GPU-accelerated library to make running PyTorch models in the browser a bit easier.
+A GPU-accelerated library to make running PyTorch models in the browser a bit easier.
 
 ## Usage example
 
