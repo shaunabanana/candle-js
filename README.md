@@ -92,7 +92,7 @@ This will create a directory named `/path/to/your/model-candle`. In the director
 **Then, in your script:**
 
 ```javascript
-let loader = new Loader('model');
+let loader = new Loader('url/to/model-candle');
 loader.load(vae, function () {
     console.log('Everything loaded!');
 });
