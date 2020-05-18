@@ -1,4 +1,4 @@
-import {Model, Loader, Tensor, Linear, Conv2d, ConvTranspose2d, ReLU, Sigmoid} from "./candle.js";
+import {Model, Loader, Linear, Conv2d, ConvTranspose2d, ReLU, Sigmoid} from "./candle.js";
 
 
 class FontVAE extends Model {
@@ -44,33 +44,5 @@ let vae = new FontVAE();
 
 let loader = new Loader('model-candle');
 loader.load(vae, function () {
-    console.log('Everything loaded');
-    let image = new Tensor(1, 64, 64).fill(1);
-    let z = new Tensor(1, 126).fill(0);
-    z.set(1, 0, 64);
-    console.log(z);
-    console.log(vae.encode(image));
-    let recon = vae.decode(z);
-    console.log(recon);
-    console.log(recon.get(0, 0, 0));
-    console.log(recon.get(0, 0, 5));
-    console.log(recon.get(0, 1, 5));
-
-});
-
-
-new p5(( p ) => {
-
-    let x = 100;
-    let y = 100;
-  
-    p.setup = () => {
-        p.createCanvas(200, 200);
-    };
-  
-    p.draw = () => {
-        p.background(0);
-        p.fill(255);
-        p.rect(x,y,50,50);
-    };
+    console.log('Everything loaded!');
 });

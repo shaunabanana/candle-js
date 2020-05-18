@@ -1,10 +1,30 @@
-# candle-js
-A GPU-accelerated library to make running PyTorch models in the browser a bit easier.
+# Candle.js
+A GPU-accelerated library to make running PyTorch models in the browser a bit easier. Also serves as a tensor computation library.
 
 ## Usage example
 
+### Import dependencies
+Import gpu.js as Candle.js depends on it for accelerated computing:
+
+```html
+<head>
+    ...
+    <script src='libs/gpu-browser.min.js'></script>
+</head>
+```
+
+Import classes from Candle.js:
+
+```javascript
+import {Model, Loader, Tensor, Linear, Conv2d, ConvTranspose2d, ReLU, Sigmoid} from "./candle.js";
+```
+
 ### Model definition
+
+> **TL;DR: The layer names should match!**
+
 **Your PyTorch model:**
+
 ```python
 def __init__(...):
     ...
@@ -44,6 +64,7 @@ constructor (...) {
 
 ### Forward function
 **Your PyTorch model:**
+
 ```python
 def forward(x):
     h = F.relu(self.dconv1(x))
@@ -59,7 +80,27 @@ forward (x) {
 }
 ```
 
-## Currently supported layers:
+### Loading a pretrained model generated with Candle.js helper
+**Using Candle.js helper:**
+
+```
+python candle-helper.py /path/to/your/model.pt
+```
+
+This will create a directory named `/path/to/your/model-candle`. In the directory will be a model.json that describes you model, and chunks of binary data that will be loaded by the Candle.js Loader accordingly.
+
+**Then, in your script:**
+
+```javascript
+let loader = new Loader('model');
+loader.load(vae, function () {
+    console.log('Everything loaded!');
+});
+```
+
+Et voila! You can now run your PyTorch model in the browser!
+
+## Currently supported layers (more layers to come!):
 
 > **Note: currently no batch processing is supported in convolutional layers due to limits in GPU acceleration.** 
 >
