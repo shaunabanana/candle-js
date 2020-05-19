@@ -1,4 +1,9 @@
-const gpu = new GPU({mode: 'dev'});
+let gpu;
+if (navigator.platform == 'Win32') {
+    gpu = new GPU({mode: 'dev'});
+} else {
+  gpu = new GPU();
+}
 
 let config = {
     dynamicOutput: true, 
