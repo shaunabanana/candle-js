@@ -1,5 +1,6 @@
 # Candle.js
-A GPU-accelerated library to make running PyTorch models in the browser a bit easier. Also serves as a tensor computation library.
+While there's no Torch in the browser, there's still Candle.
+Candle.js is a GPU-accelerated library to make running PyTorch models in the browser a bit easier. It also serves as a tensor computation library.
 
 ## Usage example
 
